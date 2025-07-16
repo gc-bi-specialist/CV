@@ -139,18 +139,179 @@
   </nav>
 
   <main>
-    <h1>Home</h1>
+    <h1>Welcome to my Power BI Portfolio</h1>
 
 
     <p>
-      Hello, welcome to my Power BI Portfolio! I'm Giuseppe and I’m a Business Intelligence Specialist passionate about turning complex datasets into intuitive, impactful visual stories. With experience in <strong>Power BI</strong>, <strong>data modeling</strong>, <strong>cloud platforms</strong>, and <strong>automation</strong>, I help businesses make confident, data-informed decisions.
+      Hello! I'm Giuseppe and I’m a Business Intelligence Specialist passionate about turning complex datasets into intuitive, impactful visual stories. With experience in <strong>Power BI</strong>, <strong>data modeling</strong>, <strong>cloud platforms</strong>, and <strong>automation</strong>, I help businesses make confident, data-informed decisions.
     </p>
 
 	<p>
 	In this portfolio, you’ll find a selection of <strong>Power BI reports</strong> that highlight my expertise in advanced data visualization techniques and visual storytelling. Each project demonstrates how thoughtful report design, interactivity, and UX best practices can elevate data understanding and empower faster, smarter business decisions.	
 	</p>
+
+
+
+<!-- INIZIO Carosello -->
+<div style="max-width: 700px; margin: 00px auto; text-align: center;">
+  <h3>Projects gallery</h3>
+  <div class="carousel-container">
+	<a href="projects.html" target="_blank" class="carousel-link">
+	  <div class="carousel-track">
+		<img class="carousel-image" src="assets/images/Sales.png" alt="Report 1" />
+		<img class="carousel-image" src="assets/images/Auto configurator.png" alt="Report 2" />
+		<img class="carousel-image" src="assets/images/Social media engagements.png" alt="Report 3" />
+	  </div>
+	</a>
+	
+	<button class="arrow left" onclick="prevSlide()" aria-label="Previous slide">
+	  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+		<path d="M15 18L9 12L15 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+	  </svg>
+	</button>
+
+	<button class="arrow right" onclick="nextSlide()" aria-label="Next slide">
+	  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+		<path d="M9 6L15 12L9 18" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+	  </svg>
+	</button>	
 		
 	
+  </div>
+</div>
+
+<style>
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-link {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 10px;
+  user-select: none;
+}
+
+  .carousel-image.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .carousel-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .carousel-buttons button {
+    padding: 8px 16px;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .carousel-buttons button:hover {
+    background-color: #666;
+  }
+  
+	.arrow {
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  background: none;
+	  border: none;
+	  padding: 5px;
+	  cursor: pointer;
+	  z-index: 2;
+	  opacity: 0.8;
+	  transition: opacity 0.3s ease;
+	}
+
+	.arrow:hover {
+	  opacity: 1;
+	}
+
+	.arrow.left {
+	  left: 10px;
+	}
+
+	.arrow.right {
+	  right: 10px;
+	}
+
+	.arrow svg {
+	  stroke: white;
+	}  
+ 
+ 
+</style>
+
+<script>
+const track = document.querySelector(".carousel-track");
+const images = document.querySelectorAll(".carousel-image");
+let current = 0;
+let interval;
+
+function updateSlidePosition() {
+  const imageWidth = images[0].offsetWidth; // larghezza fissa immagine
+  track.style.transform = `translateX(${-current * imageWidth}px)`;
+}
+
+function nextSlide() {
+  current = (current + 1) % images.length;
+  updateSlidePosition();
+  resetAutoplay();
+}
+
+function prevSlide() {
+  current = (current - 1 + images.length) % images.length;
+  updateSlidePosition();
+  resetAutoplay();
+}
+
+function resetAutoplay() {
+  clearInterval(interval);
+  startAutoplay();
+}
+
+function startAutoplay() {
+  interval = setInterval(nextSlide, 4000);
+}
+
+function stopAutoplay() {
+  clearInterval(interval);
+}
+
+// Imposta posizione iniziale
+updateSlidePosition();
+startAutoplay();
+
+</script>
+
+
+
+
 	
 	<p class="quote">“Without data, you're just another person with an opinion.” <br>
 	W. Edwards Deming 
